@@ -15,14 +15,51 @@ function dpList(ns, current = "home", set = new Set()) {
 
 export async function main(ns) {
   let sList = dpList(ns)
+	let servers = [];
+	let player = new BasePlayer(ns, "player")
+	await player.updateCache(false)
+	for (let s of sList) {
+		let server = new HackableBaseServer(ns, s)
+		servers.push(server);
+	}
+
+	for (let server of servers) {
+		await server.updateCache(false);
+	}
+
+	let target = new HackableBaseServer(ns, "foodnstuff")
+
+
+
+
+
+
+
+
+
+  /** 
+  let sList = dpList(ns)
   let servers = [];
   let player = new BasePlayer(ns, "player")
   await player.updateCache(false)
 
+  ns.print(`${player.id}`)
+  ns.print(`${player.data}`)
+  ns.print(`${player.updated_at}`)
+  ns.print(`${player.hp.current}`)
+  ns.print(`${player.hp.max}`)
+  ns.print(`level: ${player.level}`)
+  ns.print(`money: ${player.money}`)
+  ns.print(`int: ${player.intellegence}`)
+  ns.print(`city: ${player.city}`)
+  ns.print(`classname: ${player.className}`)
+  ns.print(`${player.company.companyName}`)
+  ns.print(`${player.company.multipliers.rep}`)
+  ns.print(`${server.}`)
+  
   
   let server = new BaseServer(ns, "foodnstuff")
-  //Works
-  //await server.updateCache(false)
+  await server.updateCache(false)
 
   
   ns.print(`${server.id}`)
@@ -31,11 +68,9 @@ export async function main(ns) {
 
   let getters = server.listGetters(server)
   ns.print(`Getters (test): ${getters.size}`)
-  // Results in 17
 
   let hServer = new HackableBaseServer(ns, "foodnstuff")
-  //BReaks
-  //await server.updateCache(false)
+  await server.updateCache(false)
 
   
   ns.print(`${hServer.id}`)
@@ -45,8 +80,8 @@ export async function main(ns) {
 
   let hGetters = hServer.listGetters(hServer)
   ns.print(`Getters (hack test): ${hGetters.size}`)
-  // Results in 0
-  
+
+  */
 
 
 }

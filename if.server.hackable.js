@@ -4,9 +4,13 @@ export default class HackableBaseServer extends BaseServer {
   constructor(ns, hostname) {
     super();
     this.ns = ns;
-    this._id = hostname
+    this._id = hostname;
   }
 
+
+  get isAttacker() { return ( this.purchased || this.isHome || (this.ram.max > 0 && this.admin))}
+
+  
   sudo() {
     try {
       ns.brutessh(this.id)

@@ -14,12 +14,10 @@ export default class BaseServer {
       Object.getOwnPropertyDescriptors(
         Reflect.getPrototypeOf(instance)
       )).filter(e => typeof e[1]["get"] === 'function' && e[0] !== '__proto__').map(e => e[0])
-    //this.ns.print(`listed! ${getters}`)
     getters.forEach(g => {
       properties.add(g);
       return this.listGetters(Object.getPrototypeOf(instance), properties)
     })
-    //this.ns.print(`added! ${getters}`)
     return properties
   }
 

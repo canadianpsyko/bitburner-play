@@ -31,6 +31,7 @@ export async function main(ns) {
 
   let getters = server.listGetters(server)
   ns.print(`Getters (test): ${getters.size}`)
+  // Results in 17
 
   let hServer = new HackableBaseServer(ns, "foodnstuff")
   //BReaks
